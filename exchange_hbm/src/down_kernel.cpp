@@ -175,7 +175,7 @@ __kernel void down_kernel(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTER
     #pragma HLS INTERFACE s_axilite port=return bundle=control
 
     int i;
-    for(i=0; i<2/2; i++){
+    for(i=0; i<ITERATION/2; i++){
         lc_mgvf(result, imgvf, I, port_to, port_from + GRID_COLS, (i==0));
         make_syn(syn_slave);
         lc_mgvf(imgvf + GRID_COLS/WIDTH_FACTOR, result - GRID_COLS/WIDTH_FACTOR, I, port_to + GRID_COLS, port_from, false);

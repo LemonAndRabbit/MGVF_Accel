@@ -161,7 +161,7 @@ __kernel void up_kernel(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFA
 
 
     int i;
-    for(i=0; i<2/2; i++){
+    for(i=0; i<ITERATION/2; i++){
         lc_mgvf(result, imgvf - GRID_COLS/WIDTH_FACTOR, I, port_to, port_from + GRID_COLS, (i==0));
         make_syn(syn_master);        
         lc_mgvf(imgvf, result - GRID_COLS/WIDTH_FACTOR, I, port_to + GRID_COLS, port_from, false);
