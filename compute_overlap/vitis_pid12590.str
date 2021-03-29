@@ -1,0 +1,77 @@
+/*
+
+Xilinx Vitis v2020.2.0 (64-bit) [Major: 2020, Minor: 2]
+SW Build 3064172 on 2020-11-18-06:24:19
+
+Process ID (PID): 12590
+License: Customer
+
+Current time: 	Mon Mar 29 15:48:59 CST 2021
+Time zone: 	中国标准时间 (Asia/Shanghai)
+
+OS: Ubuntu
+OS Version: 5.8.0-44-generic
+OS Architecture: amd64
+Available processors (cores): 8
+
+Display: :0
+Screen size: 1920x1080
+Available screens: 1
+Available disk space: 64 GB
+
+Java version: 	11.0.2 64-bit
+Java home: 	/home/yzf/FPGA/Vitis/2020.2/tps/lnx64/jre11.0.2
+Java executable location: 	/home/yzf/FPGA/Vitis/2020.2/tps/lnx64/jre11.0.2/bin/java
+Java initial memory (-Xms): 	64 MB
+Java maximum memory (-Xmx):	 1,024 MB
+
+Java library paths: /home/yzf/FPGA/Vitis/2020.2/tps/lnx64/javafx-sdk-11.0.2/lib:/home/yzf/FPGA/Vitis/2020.2/lib/lnx64.o/Ubuntu:/home/yzf/FPGA/Vitis/2020.2/lib/lnx64.o:/home/yzf/FPGA/Vitis/2020.2/tps/lnx64/jre11.0.2/lib/:/home/yzf/FPGA/Vitis/2020.2/tps/lnx64/jre11.0.2/lib//server:/home/yzf/FPGA/Vitis/2020.2/lib/lnx64.o:/home/yzf/FPGA/Vitis/2020.2/lib/lnx64.o/Ubuntu:/home/yzf/FPGA/Vitis/2020.2/lib/lnx64.o:/home/yzf/FPGA/Vitis/2020.2/tps/lnx64/python-3.8.3/lib:/opt/xilinx/xrt/lib::/home/yzf/FPGA/Vitis/2020.2/bin/../lnx64/tools/dot/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+
+Java class paths: /home/yzf/FPGA/Vitis/2020.2/eclipse/lnx64.o//plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar
+LD_LIBRARY_PATH: /home/yzf/FPGA/Vitis
+
+User name: 	yzf
+User home directory: /home/yzf
+User working directory: /home/yzf/workspace/my_mgvf/compute_overlap
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: /home/yzf/FPGA/Vitis
+HDI_APPROOT: /home/yzf/FPGA/Vitis/2020.2
+RDI_DATADIR: /home/yzf/FPGA/Vitis/2020.2/data
+RDI_BINDIR: /home/yzf/FPGA/Vitis/2020.2/bin
+
+Vitis preferences directory: /home/yzf/.Xilinx/Vitis/2020.2/
+Vitis workspace directory: /home/yzf/workspace/FPGA
+Vitis workspace log file location: /home/yzf/workspace/FPGA/.metadata/.log
+Engine tmp dir: 	
+
+Xilinx Environment Variables
+----------------------------
+XILINX_DSP: 
+XILINX_HLS: /home/yzf/FPGA/Vitis_HLS/2020.2
+XILINX_PLANAHEAD: /home/yzf/FPGA/Vitis/2020.2
+XILINX_SDK: /home/yzf/FPGA/Vitis/2020.2
+XILINX_VITIS: /home/yzf/FPGA/Vitis/2020.2
+XILINX_VIVADO: /home/yzf/FPGA/Vivado/2020.2
+XILINX_VIVADO_HLS: /home/yzf/FPGA/Vivado/2020.2
+XILINX_XRT: /opt/xilinx/xrt
+_RDI_DONT_SET_XILINX_AS_PATH: True
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+selectTreeTable("src", "Backprop0_system > Backprop0", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "TreeViewer.NavigatorContentServiceContentProvider");
+selectTreeTable("backprop_kernel.cpp", "Backprop0_system > Backprop0 > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "TreeViewer.NavigatorContentServiceContentProvider");
+activateView("Problems", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Vitis Log", "SdkLogView", "CTabItem.VITIS_LOG");
+activateView("Guidance", "SDXDrcView", "CTabItem.GUIDANCE");
+selectTreeTable("backprop_kernel.cpp", "Backprop0_system > Backprop0 > src", EventType.DOUBLE_CLICK, "Explorer", "ProjectExplorer", "TreeViewer.NavigatorContentServiceContentProvider");
+selectButton("Cancel", "Confirm Exit", "MessageDialogWithToggle", "Button.CANCEL");
+selectButton("Exit", "Confirm Exit", "MessageDialogWithToggle", "Button.EXIT");
+// Exiting Xilinx Vitis with a status code '0' at 3/29/21, 3:49:45 PM CST
+// Elapsed time: 00:00:46
+

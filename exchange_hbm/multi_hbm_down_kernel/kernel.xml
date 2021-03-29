@@ -1,0 +1,24 @@
+<root versionMajor="1" versionMinor="5">
+    <kernel name="down_kernel" language="c" vlnv="xilinx.com:hls:down_kernel:1.0" attributes="" hash="" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" compileOptions="" profileType="none" hwControlProtocol="ap_ctrl_chain" interrupt="true">
+        <ports>
+            <port name="M_AXI_RESULT1" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+            <port name="M_AXI_IMGVF1" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+            <port name="M_AXI_I1" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+            <port name="M_AXI_PORT_TO" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+            <port name="M_AXI_PORT_FROM" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="512"/>
+            <port name="SYN_SLAVE" mode="read_only" dataWidth="1" portType="stream"/>
+            <port name="S_AXI_CONTROL" portType="addressable" mode="slave" base="0x0" range="0x1000" dataWidth="32"/>
+        </ports>
+        <args>
+            <arg id="0" name="result" addressQualifier="1" port="M_AXI_RESULT1" hostOffset="0x0" hostSize="0x8" offset="0x10" size="0x8" type="void*"/>
+            <arg id="1" name="imgvf" addressQualifier="1" port="M_AXI_IMGVF1" hostOffset="0x0" hostSize="0x8" offset="0x1C" size="0x8" type="void*"/>
+            <arg id="2" name="I" addressQualifier="1" port="M_AXI_I1" hostOffset="0x0" hostSize="0x8" offset="0x28" size="0x8" type="void*"/>
+            <arg id="3" name="port_to_offset" addressQualifier="1" port="M_AXI_PORT_TO" hostOffset="0x0" hostSize="0x8" offset="0x34" size="0x8" type="void*"/>
+            <arg id="4" name="port_from_offset" addressQualifier="1" port="M_AXI_PORT_FROM" hostOffset="0x0" hostSize="0x8" offset="0x40" size="0x8" type="void*"/>
+            <arg id="5" name="syn_slave" addressQualifier="4" port="SYN_SLAVE" hostOffset="0x0" hostSize="0x8" offset="0x0" size="0x0" type="stream&lt;hls::axis&lt;ap_uint&lt;1&gt;, 0, 0, 0&gt;, 0&gt;&amp;" memSize="0x1" origName="syn_slave" origUse="variable"/>
+        </args>
+        <compileWorkGroupSize x="1" y="1" z="1"/>
+        <maxWorkGroupSize x="1" y="1" z="1"/>
+    </kernel>
+</root>
+

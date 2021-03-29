@@ -153,8 +153,13 @@ __kernel void up_kernel(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFA
     #pragma HLS INTERFACE s_axilite port=imgvf bundle=control
     #pragma HLS INTERFACE s_axilite port=I bundle=control
 
-    #pragma HLS INTERFACE axis port=port_to bundle=port_to
-    #pragma HLS INTERFACE axis port=port_from bundle=port_from
+    #pragma HLS INTERFACE m_axi port=port_to bundle=port_to
+    #pragma HLS INTERFACE m_axi port=port_from bundle=port_from
+
+    #pragma HLS INTERFACE s_axilite port=port_to bundle=control
+    #pragma HLS INTERFACE s_axilite port=port_from bundle=control
+
+    #pragma HLS INTERFACE axis port=syn_master
     
     #pragma HLS INTERFACE s_axilite port=return bundle=control
 
