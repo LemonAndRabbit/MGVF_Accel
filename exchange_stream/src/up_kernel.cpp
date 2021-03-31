@@ -53,6 +53,7 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
 
 	int i;
 
+INITIALIZE_LOOP:
     int input_bound = GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR;
     for (i = GRID_COLS; i < input_bound; i+= WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
@@ -65,15 +66,25 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
         }
     }
 
+MAJOR_LOOP:
     for (i = 0; i < GRID_COLS / PARA_FACTOR * PART_ROWS; i++) {
 		int k;
 #pragma HLS pipeline II=1
 
+COMPUTE_LOOP:
 		for (k = 0; k < PARA_FACTOR; k++) {
 #pragma HLS unroll
 
 			float ul[PARA_FACTOR], u[PARA_FACTOR], ur[PARA_FACTOR], l[PARA_FACTOR], c[PARA_FACTOR], r[PARA_FACTOR], dl[PARA_FACTOR], d[PARA_FACTOR], dr[PARA_FACTOR], vI[PARA_FACTOR];
-
+#pragma HLS array_partition variable=ul complete dim=0
+#pragma HLS array_partition variable=u complete dim=0
+#pragma HLS array_partition variable=ur complete dim=0
+#pragma HLS array_partition variable=l complete dim=0
+#pragma HLS array_partition variable=c complete dim=0
+#pragma HLS array_partition variable=r complete dim=0
+#pragma HLS array_partition variable=dl complete dim=0
+#pragma HLS array_partition variable=d complete dim=0
+#pragma HLS array_partition variable=dr complete dim=0
 			int is_top = (i < GRID_COLS / PARA_FACTOR);
 			int is_right = (i % (GRID_COLS / PARA_FACTOR) == (GRID_COLS / PARA_FACTOR - 1)) && (k == PARA_FACTOR - 1);
 			int is_bottom = (i >= GRID_COLS / PARA_FACTOR * (PART_ROWS - 1));
@@ -106,12 +117,12 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
             }
         
 		}
-
+SHIFT_LOOP:
 		for (k = 0; k < GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2; k++) {
 #pragma HLS unroll
 			imgvf_rf[k] = imgvf_rf[k + PARA_FACTOR];
 		}
-
+FEED_LOOP:
 		for (k = 0; k < PARA_FACTOR; k += WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
             for(int g = 0; g < WIDTH_FACTOR && g+k < PARA_FACTOR; g++){
