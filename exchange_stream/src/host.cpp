@@ -41,7 +41,7 @@ int reset(float* up_MGVF, float* up_I, float* down_MGVF, float* down_I, float* u
     */
     std::ifstream data_input_I("../data/inputI.data");
     std::ifstream data_input_MGVF("../data/inputMGVF.data");
-    std::ifstream check_output("../data/check.data");
+    std::ifstream check_output("../data/check1.data");
     for(size_t i = 0; i < test_size/2 - GRID_COLS; i++){
         data_input_MGVF >> up_MGVF[i];
         data_input_I >> up_I[i];

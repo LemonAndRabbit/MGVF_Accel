@@ -15,7 +15,7 @@
         <PipelineType>none</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>2.574</EstimatedClockPeriod>
+            <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
@@ -29,20 +29,20 @@
             <Interval-max>undef</Interval-max>
         </SummaryOfOverallLatency>
         <SummaryOfLoopLatency>
-            <VITIS_LOOP_138_1>
+            <VITIS_LOOP_147_1>
                 <TripCount>undef</TripCount>
                 <Latency>undef</Latency>
                 <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                <IterationLatency>undef</IterationLatency>
-            </VITIS_LOOP_138_1>
+                <IterationLatency>8890</IterationLatency>
+            </VITIS_LOOP_147_1>
         </SummaryOfLoopLatency>
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
             <BRAM_18K>90</BRAM_18K>
-            <DSP>69</DSP>
-            <FF>59843</FF>
-            <LUT>109427</LUT>
+            <DSP>1104</DSP>
+            <FF>195186</FF>
+            <LUT>104101</LUT>
             <URAM>0</URAM>
         </Resources>
         <AvailableResources>
@@ -1934,16 +1934,106 @@
             <ModuleName>up_kernel</ModuleName>
             <InstancesList>
                 <Instance>
-                    <InstName>grp_lc_mgvf_fu_127</InstName>
+                    <InstName>grp_lc_mgvf_fu_121</InstName>
                     <ModuleName>lc_mgvf</ModuleName>
                     <IsCompInst>true</IsCompInst>
-                    <ID>127</ID>
+                    <ID>121</ID>
                     <InstancesList>
                         <Instance>
-                            <InstName>grp_lc_mgvf_stencil_core_fu_5619</InstName>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5003</InstName>
                             <ModuleName>lc_mgvf_stencil_core</ModuleName>
                             <IsCompInst>true</IsCompInst>
-                            <ID>5619</ID>
+                            <ID>5003</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5021</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5021</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5041</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5041</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5061</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5061</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5081</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5081</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5101</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5101</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5121</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5121</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5141</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5141</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5161</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5161</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5181</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5181</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5201</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5201</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5221</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5221</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5241</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5241</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5261</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5261</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5281</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5281</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5301</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5301</ID>
                         </Instance>
                     </InstancesList>
                 </Instance>
@@ -2153,46 +2243,46 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>3.33</TargetClockPeriod>
                     <ClockUncertainty>0.90</ClockUncertainty>
-                    <EstimatedClockPeriod>2.574</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>undef</Best-caseLatency>
-                    <Average-caseLatency>undef</Average-caseLatency>
-                    <Worst-caseLatency>undef</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <Best-caseLatency>4443</Best-caseLatency>
+                    <Average-caseLatency>4443</Average-caseLatency>
+                    <Worst-caseLatency>4443</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>14.809 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>14.809 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>14.809 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>4443</PipelineInitiationInterval>
                     <PipelineType>none</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_53_1>
-                        <Name>VITIS_LOOP_53_1</Name>
+                    <INITIALIZE_LOOP>
+                        <Name>INITIALIZE_LOOP</Name>
                         <TripCount>10</TripCount>
                         <Latency>11</Latency>
                         <AbsoluteTimeLatency>36.663 ns</AbsoluteTimeLatency>
                         <PipelineII>1</PipelineII>
                         <PipelineDepth>2</PipelineDepth>
-                    </VITIS_LOOP_53_1>
-                    <VITIS_LOOP_64_3>
-                        <Name>VITIS_LOOP_64_3</Name>
-                        <TripCount>undef</TripCount>
-                        <Latency>undef</Latency>
-                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>16</PipelineII>
-                        <PipelineDepth>249</PipelineDepth>
-                    </VITIS_LOOP_64_3>
+                    </INITIALIZE_LOOP>
+                    <MAJOR_LOOP>
+                        <Name>MAJOR_LOOP</Name>
+                        <TripCount>4128</TripCount>
+                        <Latency>4221</Latency>
+                        <AbsoluteTimeLatency>14.069 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>95</PipelineDepth>
+                    </MAJOR_LOOP>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <DSP>69</DSP>
+                    <DSP>1104</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>1</UTIL_DSP>
-                    <FF>54824</FF>
+                    <UTIL_DSP>16</UTIL_DSP>
+                    <FF>190196</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
-                    <UTIL_FF>2</UTIL_FF>
-                    <LUT>103552</LUT>
+                    <UTIL_FF>8</UTIL_FF>
+                    <LUT>98226</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
                     <UTIL_LUT>8</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -3788,17 +3878,6 @@
                     <Bits>64</Bits>
                     <Attribute>data</Attribute>
                 </RtlPorts>
-                <RtlPorts>
-                    <name>bonus</name>
-                    <Object>bonus</Object>
-                    <Type>scalar</Type>
-                    <Scope/>
-                    <IOProtocol>ap_none</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>29</Bits>
-                    <Attribute>data</Attribute>
-                </RtlPorts>
             </InterfaceSummary>
         </Module>
         <Module>
@@ -3807,7 +3886,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>3.33</TargetClockPeriod>
                     <ClockUncertainty>0.90</ClockUncertainty>
-                    <EstimatedClockPeriod>2.574</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -3820,14 +3899,14 @@
                     <PipelineType>none</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_138_1>
-                        <Name>VITIS_LOOP_138_1</Name>
+                    <VITIS_LOOP_147_1>
+                        <Name>VITIS_LOOP_147_1</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <IterationLatency>undef</IterationLatency>
-                        <PipelineDepth>undef</PipelineDepth>
-                    </VITIS_LOOP_138_1>
+                        <IterationLatency>8890</IterationLatency>
+                        <PipelineDepth>8890</PipelineDepth>
+                    </VITIS_LOOP_147_1>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
@@ -3835,15 +3914,15 @@
                     <BRAM_18K>90</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>2</UTIL_BRAM>
-                    <DSP>69</DSP>
+                    <DSP>1104</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>1</UTIL_DSP>
-                    <FF>59843</FF>
+                    <UTIL_DSP>16</UTIL_DSP>
+                    <FF>195186</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
-                    <UTIL_FF>2</UTIL_FF>
-                    <LUT>109427</LUT>
+                    <UTIL_FF>8</UTIL_FF>
+                    <LUT>104101</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>9</UTIL_LUT>
+                    <UTIL_LUT>8</UTIL_LUT>
                     <URAM>0</URAM>
                     <AVAIL_URAM>960</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
@@ -6149,15 +6228,15 @@
             <item name="Burst Summary">
                 <table>
                     <keys size="3">HW Interface, Message, Location</keys>
-                    <column name="m_axi_imgvf1">Multiple burst reads of length 10 and bit width 512 in loop 'VITIS_LOOP_53_1', /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:53:22</column>
+                    <column name="m_axi_imgvf1">Multiple burst reads of length 10 and bit width 512 in loop 'INITIALIZE_LOOP', /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:54:5</column>
                 </table>
             </item>
             <item name="Burst Missed">
                 <table>
                     <keys size="5">HW Interface, Variable, Problem, Resolution, Location</keys>
-                    <column name="m_axi_I1">I, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:64:22</column>
-                    <column name="m_axi_result1">imgvf, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:53:22</column>
-                    <column name="m_axi_I1">, Inferred burst reverted due to conflict with __Val2__, 214-224, /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:64:22</column>
+                    <column name="m_axi_I1">I, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:65:5</column>
+                    <column name="m_axi_result1">imgvf, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:54:5</column>
+                    <column name="m_axi_I1">, Inferred burst reverted due to conflict with call, 214-224, /home/yzf/workspace/my_mgvf/compute_overlap/src/up_kernel.cpp:65:5</column>
                 </table>
             </item>
         </section>

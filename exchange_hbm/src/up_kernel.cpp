@@ -48,12 +48,13 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
 {
 	int cols = GRID_COLS;
 	int rows = PART_ROWS;
-	float imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + PARA_FACTOR];
+	float imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + PARA_FACTOR];
 #pragma HLS array_partition variable=imgvf_rf complete dim=0
 
 	int i;
 
-    int input_bound = GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR;
+INITIALIZE_LOOP:
+    int input_bound = GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + PARA_FACTOR;
     for (i = GRID_COLS; i < input_bound; i+= WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
         for (int j = 0; j < WIDTH_FACTOR; j++){
@@ -65,18 +66,29 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
         }
     }
 
+MAJOR_LOOP:
     for (i = 0; i < GRID_COLS / PARA_FACTOR * PART_ROWS; i++) {
 		int k;
 #pragma HLS pipeline II=1
 
+        int is_bottom = (i >= GRID_COLS / PARA_FACTOR * (PART_ROWS - 1));
+        INTERFACE_WIDTH temp512;
+COMPUTE_LOOP:
 		for (k = 0; k < PARA_FACTOR; k++) {
 #pragma HLS unroll
 
 			float ul[PARA_FACTOR], u[PARA_FACTOR], ur[PARA_FACTOR], l[PARA_FACTOR], c[PARA_FACTOR], r[PARA_FACTOR], dl[PARA_FACTOR], d[PARA_FACTOR], dr[PARA_FACTOR], vI[PARA_FACTOR];
-
+#pragma HLS array_partition variable=ul complete dim=0
+#pragma HLS array_partition variable=u complete dim=0
+#pragma HLS array_partition variable=ur complete dim=0
+#pragma HLS array_partition variable=l complete dim=0
+#pragma HLS array_partition variable=c complete dim=0
+#pragma HLS array_partition variable=r complete dim=0
+#pragma HLS array_partition variable=dl complete dim=0
+#pragma HLS array_partition variable=d complete dim=0
+#pragma HLS array_partition variable=dr complete dim=0
 			int is_top = (i < GRID_COLS / PARA_FACTOR);
 			int is_right = (i % (GRID_COLS / PARA_FACTOR) == (GRID_COLS / PARA_FACTOR - 1)) && (k == PARA_FACTOR - 1);
-			int is_bottom = (i >= GRID_COLS / PARA_FACTOR * (PART_ROWS - 1));
 			int is_left = (i % (GRID_COLS / PARA_FACTOR) == 0) && (k == 0);
 
 			c[k] = imgvf_rf[GRID_COLS * (0) + 0 + k + GRID_COLS + MAX_RADIUS];
@@ -99,36 +111,46 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
             float res = lc_mgvf_stencil_core(c[k], ul[k], u[k], ur[k], l[k], r[k], dl[k], d[k], dr[k], vI[k]);
             //float res = d[k];
 			result[idx].range(range_idx+31, range_idx) = *((uint32_t *)(&res));
+            /*
             if(is_bottom){
                 unsigned int dk_idx = (i * PARA_FACTOR + k - GRID_COLS * (PART_ROWS - 1)) / WIDTH_FACTOR;
                 unsigned int dk_range_idx =  (i * PARA_FACTOR + k - GRID_COLS * (PART_ROWS - 1)) % WIDTH_FACTOR * 32;
                 buffer_to[dk_idx].range(dk_range_idx+31, dk_range_idx) = *((uint32_t *)(&res));
             }
-        
+            */
+           temp512.range(range_idx+31, range_idx) = *((uint32_t *)(&res));
 		}
 
-		for (k = 0; k < GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2; k++) {
+        if(is_bottom){
+            unsigned int dk_idx = (i * PARA_FACTOR - GRID_COLS * (PART_ROWS - 1)) / WIDTH_FACTOR;
+            buffer_to[dk_idx] = temp512;
+        }
+SHIFT_LOOP:
+		for (k = 0; k < GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR; k++) {
 #pragma HLS unroll
 			imgvf_rf[k] = imgvf_rf[k + PARA_FACTOR];
 		}
-
+FEED_LOOP:
 		for (k = 0; k < PARA_FACTOR; k += WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
-            for(int g = 0; g < WIDTH_FACTOR && g+k < PARA_FACTOR; g++){
+            for(int g = 0; g < WIDTH_FACTOR; g++){
 #pragma HLS unroll
-                if(GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g < GRID_COLS*(PART_ROWS+1) || first_round){
-                    unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
-                    unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
+                unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
+                if(idx < GRID_COLS*(PART_ROWS+1)/WIDTH_FACTOR || first_round){
+                    //unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
+                    //unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
+                    unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
                     uint32_t temp_imgvf = imgvf[idx].range(range_idx+31, range_idx);
                     float read_imgvf = *((float*)(&temp_imgvf));
-                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + g + k] = read_imgvf;
+                    //imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + g + k] = read_imgvf;
+                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + g + k] = read_imgvf;
                 }
                 else{
-                    unsigned int idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)/WIDTH_FACTOR;
-                    unsigned int range_idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)%WIDTH_FACTOR*32;
+                    unsigned int idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)/WIDTH_FACTOR;
+                    unsigned int range_idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)%WIDTH_FACTOR*32;
                     uint32_t temp_imgvf_2 = buffer_from[idx_2].range(range_idx_2+31, range_idx_2);
                     float read_imgvf_2 = *((float*)(&temp_imgvf_2));
-                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + g + k] = read_imgvf_2;
+                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + g + k] = read_imgvf_2;
                 }
             }
         }

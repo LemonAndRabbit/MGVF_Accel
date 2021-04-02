@@ -99,11 +99,10 @@ MAJOR_LOOP:
     for (i = 0; i < GRID_COLS / PARA_FACTOR * PART_ROWS; i++) {
 		int k;
 #pragma HLS pipeline II=1
-COMPUTE_LOOP:
 
         int is_top = (i < GRID_COLS / PARA_FACTOR);
         INTERFACE_WIDTH temp512;
-
+COMPUTE_LOOP:
 		for (k = 0; k < PARA_FACTOR; k++) {
 #pragma HLS unroll
 
@@ -223,7 +222,7 @@ __kernel void down_kernel(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTER
     INTERFACE_WIDTH buffer_from[GRID_COLS/WIDTH_FACTOR];
 
     int i;
-    for(i=0; i<2/2; i++){
+    for(i=0; i<ITERATION/2; i++){
         lc_mgvf(result, imgvf, I, buffer_to, buffer_from, (i==0));
         data_exchange(buffer_to, buffer_from, port_to, port_from);
         lc_mgvf(imgvf + GRID_COLS/WIDTH_FACTOR, result - GRID_COLS/WIDTH_FACTOR, I, buffer_to, buffer_from, false);

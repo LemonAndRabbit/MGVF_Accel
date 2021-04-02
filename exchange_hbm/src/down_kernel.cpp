@@ -48,14 +48,16 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
 {
 	int cols = GRID_COLS;
 	int rows = PART_ROWS;
-	float imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + PARA_FACTOR];
+	//float imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + PARA_FACTOR];
+    float imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + PARA_FACTOR];
 #pragma HLS array_partition variable=imgvf_rf complete dim=0
 
 	int i;
 
-    int input_bound = GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR;
-
+    //int input_bound = GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR;
+    int input_bound = GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + PARA_FACTOR;
     if(first_round){
+PRE_LOOP1:        
         for (i = 0; i < GRID_COLS; i+= WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
             for (int j = 0; j < WIDTH_FACTOR; j++){
@@ -68,6 +70,7 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
         }
     }
     else{
+PRE_LOOP2:          
         for (i = 0; i < GRID_COLS; i+= WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
             for (int j = 0; j < WIDTH_FACTOR; j++){
@@ -80,7 +83,7 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
         }
     }
 
-
+INITIALIZE_LOOP:
     for (i = GRID_COLS; i < input_bound; i+= WIDTH_FACTOR) {
 #pragma HLS pipeline II=1
         for (int j = 0; j < WIDTH_FACTOR; j++){
@@ -92,16 +95,27 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
         }
     }
 
+MAJOR_LOOP:
     for (i = 0; i < GRID_COLS / PARA_FACTOR * PART_ROWS; i++) {
 		int k;
 #pragma HLS pipeline II=1
 
+        int is_top = (i < GRID_COLS / PARA_FACTOR);
+        INTERFACE_WIDTH temp512;
+COMPUTE_LOOP:
 		for (k = 0; k < PARA_FACTOR; k++) {
 #pragma HLS unroll
 
 			float ul[PARA_FACTOR], u[PARA_FACTOR], ur[PARA_FACTOR], l[PARA_FACTOR], c[PARA_FACTOR], r[PARA_FACTOR], dl[PARA_FACTOR], d[PARA_FACTOR], dr[PARA_FACTOR], vI[PARA_FACTOR];
-
-			int is_top = (i < GRID_COLS / PARA_FACTOR);
+#pragma HLS array_partition variable=ul complete dim=0
+#pragma HLS array_partition variable=u complete dim=0
+#pragma HLS array_partition variable=ur complete dim=0
+#pragma HLS array_partition variable=l complete dim=0
+#pragma HLS array_partition variable=c complete dim=0
+#pragma HLS array_partition variable=r complete dim=0
+#pragma HLS array_partition variable=dl complete dim=0
+#pragma HLS array_partition variable=d complete dim=0
+#pragma HLS array_partition variable=dr complete dim=0
 			int is_right = (i % (GRID_COLS / PARA_FACTOR) == (GRID_COLS / PARA_FACTOR - 1)) && (k == PARA_FACTOR - 1);
 			int is_bottom = (i >= GRID_COLS / PARA_FACTOR * (PART_ROWS - 1));
 			int is_left = (i % (GRID_COLS / PARA_FACTOR) == 0) && (k == 0);
@@ -116,8 +130,8 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
 			d[k] = (is_bottom) ? c[k] : imgvf_rf[GRID_COLS * (1) + 0 + k + GRID_COLS + MAX_RADIUS];
 			dr[k] = (is_bottom || is_right) ? c[k] : imgvf_rf[GRID_COLS * (1) + 1 + k + GRID_COLS + MAX_RADIUS];
 
-            unsigned int idx = (i*PARA_FACTOR+k) / WIDTH_FACTOR;
-            unsigned int range_idx =  (i*PARA_FACTOR+k) % WIDTH_FACTOR * 32;
+            unsigned int idx = i;
+            unsigned int range_idx =  k * 32;
 
             uint32_t temp_I = I[idx].range(range_idx+31, range_idx);
             float read_I = *((float*)(&temp_I));
@@ -125,30 +139,37 @@ static void lc_mgvf(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFACE_W
 
             float res = lc_mgvf_stencil_core(c[k], ul[k], u[k], ur[k], l[k], r[k], dl[k], d[k], dr[k], vI[k]);
             result[idx].range(range_idx+31, range_idx) = *((uint32_t *)(&res));
+            /*
             if(is_top){
                 buffer_to[idx].range(range_idx+31, range_idx) = *((uint32_t *)(&res));
             }
-
+            */
+           temp512.range(range_idx+31, range_idx) = *((uint32_t *)(&res));
         
 		}
+        
+        if(is_top){
+            buffer_to[i] = temp512;
+        }
+        
 
-		for (k = 0; k < GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2; k++) {
+SHIFT_LOOP:
+		for (k = 0; k < GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR; k++) {
 #pragma HLS unroll
 			imgvf_rf[k] = imgvf_rf[k + PARA_FACTOR];
 		}
+FEED_LOOP:
+		for (k = 0; k < PARA_FACTOR; k += 1) {
+#pragma HLS unroll    
 
-		for (k = 0; k < PARA_FACTOR; k += WIDTH_FACTOR) {
-#pragma HLS pipeline II=1
-            for(int g = 0; g < WIDTH_FACTOR && g+k < PARA_FACTOR; g++){
-#pragma HLS unroll                
-                unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
-                unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
+                //unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k)/WIDTH_FACTOR;
+            	unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k)/WIDTH_FACTOR;
+                unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k)%WIDTH_FACTOR*32;
                 uint32_t temp_imgvf = imgvf[idx].range(range_idx+31, range_idx);
                 float read_imgvf = *((float*)(&temp_imgvf));
-                imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + g + k] = read_imgvf;
-            }
-		}
-
+                //imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + k] = read_imgvf;
+            	imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + k] = read_imgvf;
+        }
 	}
 
 	return;

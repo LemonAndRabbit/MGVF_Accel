@@ -4,9 +4,9 @@ catch {::common::set_param -quiet hls.xocc.mode csynth};
 #
 
 set xocc_optimize_level 0
-open_project exchange_stream_down_kernel
-set_top down_kernel
-add_files "/home/yzf/workspace/my_mgvf/exchange_stream/src/down_kernel.cpp"
+open_project exchange_stream_up_kernel
+set_top up_kernel
+add_files "/home/yzf/workspace/my_mgvf/exchange_stream/src/up_kernel.cpp"
 open_solution solution
 set_part xcu200-fsgd2104-2-e
 create_clock -period 300MHz -name default
