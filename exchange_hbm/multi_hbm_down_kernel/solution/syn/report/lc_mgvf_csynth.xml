@@ -18,56 +18,56 @@
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>2.665</EstimatedClockPeriod>
+<EstimatedClockPeriod>2.433</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>66056</Best-caseLatency>
-<Average-caseLatency>66056</Average-caseLatency>
-<Worst-caseLatency>66056</Worst-caseLatency>
-<Best-caseRealTimeLatency>0.220 ms</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>0.220 ms</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>0.220 ms</Worst-caseRealTimeLatency>
-<Interval-min>66056</Interval-min>
-<Interval-max>66056</Interval-max>
+<Best-caseLatency>4493</Best-caseLatency>
+<Average-caseLatency>4493</Average-caseLatency>
+<Worst-caseLatency>4493</Worst-caseLatency>
+<Best-caseRealTimeLatency>14.975 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>14.975 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>14.975 us</Worst-caseRealTimeLatency>
+<Interval-min>4493</Interval-min>
+<Interval-max>4493</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<VITIS_LOOP_59_1>
+<PRE_LOOP1>
 <TripCount>8</TripCount>
 <Latency>10</Latency>
 <AbsoluteTimeLatency>33</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
-</VITIS_LOOP_59_1>
-<VITIS_LOOP_71_3>
+</PRE_LOOP1>
+<PRE_LOOP2>
 <TripCount>8</TripCount>
 <Latency>10</Latency>
 <AbsoluteTimeLatency>33</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
-</VITIS_LOOP_71_3>
-<VITIS_LOOP_84_5>
+</PRE_LOOP2>
+<INITIALIZE_LOOP>
 <TripCount>10</TripCount>
 <Latency>12</Latency>
 <AbsoluteTimeLatency>39</AbsoluteTimeLatency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
-</VITIS_LOOP_84_5>
-<VITIS_LOOP_95_7>
+</INITIALIZE_LOOP>
+<MAJOR_LOOP>
 <TripCount>4096</TripCount>
-<Latency>65753</Latency>
-<AbsoluteTimeLatency>219154</AbsoluteTimeLatency>
-<PipelineII>16</PipelineII>
-<PipelineDepth>234</PipelineDepth>
-</VITIS_LOOP_95_7>
+<Latency>4189</Latency>
+<AbsoluteTimeLatency>13961</AbsoluteTimeLatency>
+<PipelineII>1</PipelineII>
+<PipelineDepth>95</PipelineDepth>
+</MAJOR_LOOP>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<DSP>69</DSP>
-<FF>59193</FF>
-<LUT>17962</LUT>
+<DSP>1104</DSP>
+<FF>209237</FF>
+<LUT>103040</LUT>
 <BRAM_18K>0</BRAM_18K>
 <URAM>0</URAM>
 </Resources>

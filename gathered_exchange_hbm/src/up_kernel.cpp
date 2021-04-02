@@ -130,22 +130,31 @@ SHIFT_LOOP:
 #pragma HLS unroll
 			imgvf_rf[k] = imgvf_rf[k + PARA_FACTOR];
 		}
-
 FEED_LOOP:
-        unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR)/WIDTH_FACTOR;
-        unsigned int idx2 = idx%(GRID_COLS/WIDTH_FACTOR);
-        INTERFACE_WIDTH temp_imgvf1 = imgvf[idx];
-        INTERFACE_WIDTH temp_imgvf2 = buffer_from[idx2];
-        INTERFACE_WIDTH temp_imgvf3 = 
-            (idx < GRID_COLS*(PART_ROWS+1)/WIDTH_FACTOR || first_round)?temp_imgvf1:temp_imgvf2;
-        for(int g = 0; g < WIDTH_FACTOR; g++){
+		for (k = 0; k < PARA_FACTOR; k += WIDTH_FACTOR) {
+#pragma HLS pipeline II=1
+            for(int g = 0; g < WIDTH_FACTOR; g++){
 #pragma HLS unroll
-            unsigned int range_idx = g*32;
-            uint32_t temp_imgvf4 = temp_imgvf3.range(range_idx+31, range_idx);
-            float read_imgvf = *((float*)(&temp_imgvf4));
-            imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + g] = read_imgvf;
-        }   
-    }  
+                unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
+                if(idx < GRID_COLS*(PART_ROWS+1)/WIDTH_FACTOR || first_round){
+                    //unsigned int idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)/WIDTH_FACTOR;
+                    //unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
+                    unsigned int range_idx = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR + k + g)%WIDTH_FACTOR*32;
+                    uint32_t temp_imgvf = imgvf[idx].range(range_idx+31, range_idx);
+                    float read_imgvf = *((float*)(&temp_imgvf));
+                    //imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS * 2 + g + k] = read_imgvf;
+                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + g + k] = read_imgvf;
+                }
+                else{
+                    unsigned int idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)/WIDTH_FACTOR;
+                    unsigned int range_idx_2 = (GRID_COLS * (2 * MAX_RADIUS) + PARA_FACTOR + (i + 1) * PARA_FACTOR - GRID_COLS * (PART_ROWS+1) + k + g)%WIDTH_FACTOR*32;
+                    uint32_t temp_imgvf_2 = buffer_from[idx_2].range(range_idx_2+31, range_idx_2);
+                    float read_imgvf_2 = *((float*)(&temp_imgvf_2));
+                    imgvf_rf[GRID_COLS * (2 * MAX_RADIUS) + MAX_RADIUS + PARA_FACTOR + g + k] = read_imgvf_2;
+                }
+            }
+        }
+    }
 
 	return;
 }
@@ -179,19 +188,11 @@ __kernel void up_kernel(INTERFACE_WIDTH *result, INTERFACE_WIDTH *imgvf, INTERFA
 
 
     int i;
-    for(i=0; i<ITERATION*2; i++){
-        if(i%4==0){
-            lc_mgvf(result, imgvf - GRID_COLS/WIDTH_FACTOR, I, port_to, port_from + GRID_COLS, (i==0));
-        }
-        else if(i%4==1) {
-            make_syn(syn_master);  
-        }
-        else if(i%4==2) {
-            lc_mgvf(imgvf, result - GRID_COLS/WIDTH_FACTOR, I, port_to + GRID_COLS, port_from, false);
-        }     
-        else if(i%4==3){
-            make_syn(syn_master);  
-        } 
+    for(i=0; i<ITERATION/2; i++){
+        lc_mgvf(result, imgvf - GRID_COLS/WIDTH_FACTOR, I, port_to, port_from + GRID_COLS, (i==0));
+        make_syn(syn_master);        
+        lc_mgvf(imgvf, result - GRID_COLS/WIDTH_FACTOR, I, port_to + GRID_COLS, port_from, false);
+        make_syn(syn_master);
     }
     return;
 }

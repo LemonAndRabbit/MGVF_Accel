@@ -3,10 +3,10 @@
 ================================================================
 == Vitis HLS Report for 'lc_mgvf_stencil_core'
 ================================================================
-* Date:           Fri Apr  2 23:34:29 2021
+* Date:           Fri Apr  2 23:40:14 2021
 
 * Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
-* Project:        multi_hbm_up_kernel
+* Project:        gathered_exchange_hbm_kernel
 * Solution:       solution (Vitis Kernel Flow Target)
 * Product family: virtexuplus
 * Target device:  xcu200-fsgd2104-2-e

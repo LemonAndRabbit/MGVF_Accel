@@ -15,34 +15,49 @@
         <PipelineType>none</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>2.665</EstimatedClockPeriod>
+            <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
-            <Best-caseLatency>263969</Best-caseLatency>
-            <Average-caseLatency>263969</Average-caseLatency>
-            <Worst-caseLatency>263969</Worst-caseLatency>
-            <Best-caseRealTimeLatency>0.880 ms</Best-caseRealTimeLatency>
-            <Average-caseRealTimeLatency>0.880 ms</Average-caseRealTimeLatency>
-            <Worst-caseRealTimeLatency>0.880 ms</Worst-caseRealTimeLatency>
-            <Interval-min>263970</Interval-min>
-            <Interval-max>263970</Interval-max>
+            <Best-caseLatency>17</Best-caseLatency>
+            <Average-caseLatency>17937</Average-caseLatency>
+            <Worst-caseLatency>35857</Worst-caseLatency>
+            <Best-caseRealTimeLatency>56.661 ns</Best-caseRealTimeLatency>
+            <Average-caseRealTimeLatency>59.784 us</Average-caseRealTimeLatency>
+            <Worst-caseRealTimeLatency>0.120 ms</Worst-caseRealTimeLatency>
+            <Interval-min>18</Interval-min>
+            <Interval-max>35858</Interval-max>
         </SummaryOfOverallLatency>
         <SummaryOfLoopLatency>
-            <VITIS_LOOP_169_1>
-                <TripCount>2</TripCount>
-                <Latency>263968</Latency>
-                <AbsoluteTimeLatency>879805</AbsoluteTimeLatency>
-                <IterationLatency>131984</IterationLatency>
-            </VITIS_LOOP_169_1>
+            <VITIS_LOOP_182_1>
+                <TripCount>8</TripCount>
+                <Latency>
+                    <range>
+                        <min>16</min>
+                        <max>35856</max>
+                    </range>
+                </Latency>
+                <AbsoluteTimeLatency>
+                    <range>
+                        <min>53</min>
+                        <max>119508</max>
+                    </range>
+                </AbsoluteTimeLatency>
+                <IterationLatency>
+                    <range>
+                        <min>2</min>
+                        <max>4482</max>
+                    </range>
+                </IterationLatency>
+            </VITIS_LOOP_182_1>
         </SummaryOfLoopLatency>
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
             <BRAM_18K>150</BRAM_18K>
-            <DSP>69</DSP>
-            <FF>58622</FF>
-            <LUT>30327</LUT>
+            <DSP>1104</DSP>
+            <FF>199611</FF>
+            <LUT>108388</LUT>
             <URAM>0</URAM>
         </Resources>
         <AvailableResources>
@@ -3086,16 +3101,106 @@
             <ModuleName>up_kernel</ModuleName>
             <InstancesList>
                 <Instance>
-                    <InstName>grp_lc_mgvf_fu_173</InstName>
+                    <InstName>grp_lc_mgvf_fu_179</InstName>
                     <ModuleName>lc_mgvf</ModuleName>
                     <IsCompInst>true</IsCompInst>
-                    <ID>173</ID>
+                    <ID>179</ID>
                     <InstancesList>
                         <Instance>
-                            <InstName>grp_lc_mgvf_stencil_core_fu_5854</InstName>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5091</InstName>
                             <ModuleName>lc_mgvf_stencil_core</ModuleName>
                             <IsCompInst>true</IsCompInst>
-                            <ID>5854</ID>
+                            <ID>5091</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5109</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5109</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5129</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5129</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5149</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5149</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5169</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5169</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5189</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5189</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5209</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5209</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5229</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5229</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5249</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5249</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5269</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5269</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5289</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5289</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5309</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5309</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5329</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5329</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5349</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5349</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5369</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5369</ID>
+                        </Instance>
+                        <Instance>
+                            <InstName>grp_lc_mgvf_stencil_core_fu_5389</InstName>
+                            <ModuleName>lc_mgvf_stencil_core</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>5389</ID>
                         </Instance>
                     </InstancesList>
                 </Instance>
@@ -3305,48 +3410,48 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>3.33</TargetClockPeriod>
                     <ClockUncertainty>0.90</ClockUncertainty>
-                    <EstimatedClockPeriod>2.665</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>65990</Best-caseLatency>
-                    <Average-caseLatency>65990</Average-caseLatency>
-                    <Worst-caseLatency>65990</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>0.220 ms</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>0.220 ms</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>0.220 ms</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>65990</PipelineInitiationInterval>
+                    <Best-caseLatency>4480</Best-caseLatency>
+                    <Average-caseLatency>4480</Average-caseLatency>
+                    <Worst-caseLatency>4480</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>14.932 us</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>14.932 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>14.932 us</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>4480</PipelineInitiationInterval>
                     <PipelineType>none</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_57_1>
-                        <Name>VITIS_LOOP_57_1</Name>
+                    <VITIS_LOOP_58_1>
+                        <Name>VITIS_LOOP_58_1</Name>
                         <TripCount>10</TripCount>
                         <Latency>11</Latency>
                         <AbsoluteTimeLatency>36.663 ns</AbsoluteTimeLatency>
                         <PipelineII>1</PipelineII>
                         <PipelineDepth>2</PipelineDepth>
-                    </VITIS_LOOP_57_1>
-                    <VITIS_LOOP_68_3>
-                        <Name>VITIS_LOOP_68_3</Name>
+                    </VITIS_LOOP_58_1>
+                    <MAJOR_LOOP>
+                        <Name>MAJOR_LOOP</Name>
                         <TripCount>4096</TripCount>
-                        <Latency>65769</Latency>
-                        <AbsoluteTimeLatency>0.219 ms</AbsoluteTimeLatency>
-                        <PipelineII>16</PipelineII>
-                        <PipelineDepth>250</PipelineDepth>
-                    </VITIS_LOOP_68_3>
+                        <Latency>4258</Latency>
+                        <AbsoluteTimeLatency>14.192 us</AbsoluteTimeLatency>
+                        <PipelineII>1</PipelineII>
+                        <PipelineDepth>164</PipelineDepth>
+                    </MAJOR_LOOP>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <DSP>69</DSP>
+                    <DSP>1104</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>1</UTIL_DSP>
-                    <FF>50570</FF>
+                    <UTIL_DSP>16</UTIL_DSP>
+                    <FF>191555</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
-                    <UTIL_FF>2</UTIL_FF>
-                    <LUT>20948</LUT>
+                    <UTIL_FF>8</UTIL_FF>
+                    <LUT>99003</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>1</UTIL_LUT>
+                    <UTIL_LUT>8</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
@@ -3421,501 +3526,6 @@
                     <Dir>out</Dir>
                     <Bits>1</Bits>
                     <Attribute>control</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWVALID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWREADY</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWADDR</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>64</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWLEN</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>32</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWSIZE</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>3</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWBURST</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWLOCK</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWCACHE</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWPROT</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>3</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWQOS</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWREGION</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_AWUSER</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WVALID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WREADY</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WDATA</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>512</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WSTRB</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>64</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WLAST</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_WUSER</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARVALID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARREADY</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARADDR</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>64</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARLEN</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>32</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARSIZE</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>3</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARBURST</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARLOCK</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARCACHE</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARPROT</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>3</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARQOS</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARREGION</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>4</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_ARUSER</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RVALID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RREADY</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RDATA</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>512</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RLAST</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RUSER</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_RRESP</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_BVALID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_BREADY</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>out</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_BRESP</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>2</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_BID</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
-                </RtlPorts>
-                <RtlPorts>
-                    <name>m_axi_result1_BUSER</name>
-                    <Object>result1</Object>
-                    <Type>pointer</Type>
-                    <Scope/>
-                    <IOProtocol>m_axi</IOProtocol>
-                    <IOConfig/>
-                    <Dir>in</Dir>
-                    <Bits>1</Bits>
-                    <Attribute>unknown</Attribute>
                 </RtlPorts>
                 <RtlPorts>
                     <name>m_axi_imgvf1_AWVALID</name>
@@ -4404,6 +4014,501 @@
                 <RtlPorts>
                     <name>m_axi_imgvf1_BUSER</name>
                     <Object>imgvf1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWVALID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWREADY</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWADDR</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>64</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWLEN</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>32</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWSIZE</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>3</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWBURST</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWLOCK</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWCACHE</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWPROT</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>3</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWQOS</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWREGION</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_AWUSER</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WVALID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WREADY</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WDATA</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>512</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WSTRB</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>64</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WLAST</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_WUSER</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARVALID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARREADY</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARADDR</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>64</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARLEN</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>32</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARSIZE</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>3</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARBURST</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARLOCK</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARCACHE</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARPROT</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>3</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARQOS</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARREGION</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>4</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_ARUSER</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RVALID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RREADY</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RDATA</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>512</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RLAST</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RUSER</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_RRESP</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_BVALID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_BREADY</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>out</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_BRESP</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>2</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_BID</name>
+                    <Object>result1</Object>
+                    <Type>pointer</Type>
+                    <Scope/>
+                    <IOProtocol>m_axi</IOProtocol>
+                    <IOConfig/>
+                    <Dir>in</Dir>
+                    <Bits>1</Bits>
+                    <Attribute>unknown</Attribute>
+                </RtlPorts>
+                <RtlPorts>
+                    <name>m_axi_result1_BUSER</name>
+                    <Object>result1</Object>
                     <Type>pointer</Type>
                     <Scope/>
                     <IOProtocol>m_axi</IOProtocol>
@@ -5971,27 +6076,32 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>3.33</TargetClockPeriod>
                     <ClockUncertainty>0.90</ClockUncertainty>
-                    <EstimatedClockPeriod>2.665</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.433</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>263969</Best-caseLatency>
-                    <Average-caseLatency>263969</Average-caseLatency>
-                    <Worst-caseLatency>263969</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>0.880 ms</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>0.880 ms</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>0.880 ms</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>263970</PipelineInitiationInterval>
+                    <Best-caseLatency>17</Best-caseLatency>
+                    <Average-caseLatency>17937</Average-caseLatency>
+                    <Worst-caseLatency>35857</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>56.661 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>59.784 us</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0.120 ms</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>18 ~ 35858</PipelineInitiationInterval>
                     <PipelineType>none</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_169_1>
-                        <Name>VITIS_LOOP_169_1</Name>
-                        <TripCount>2</TripCount>
-                        <Latency>263968</Latency>
-                        <AbsoluteTimeLatency>0.880 ms</AbsoluteTimeLatency>
-                        <IterationLatency>131984</IterationLatency>
-                        <PipelineDepth>131984</PipelineDepth>
-                    </VITIS_LOOP_169_1>
+                    <VITIS_LOOP_182_1>
+                        <Name>VITIS_LOOP_182_1</Name>
+                        <TripCount>8</TripCount>
+                        <Latency>16 ~ 35856</Latency>
+                        <AbsoluteTimeLatency>53.328 ns ~ 0.120 ms</AbsoluteTimeLatency>
+                        <IterationLatency>
+                            <range>
+                                <min>2</min>
+                                <max>4482</max>
+                            </range>
+                        </IterationLatency>
+                        <PipelineDepth>2 ~ 4482</PipelineDepth>
+                    </VITIS_LOOP_182_1>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
@@ -5999,15 +6109,15 @@
                     <BRAM_18K>150</BRAM_18K>
                     <AVAIL_BRAM>4320</AVAIL_BRAM>
                     <UTIL_BRAM>3</UTIL_BRAM>
-                    <DSP>69</DSP>
+                    <DSP>1104</DSP>
                     <AVAIL_DSP>6840</AVAIL_DSP>
-                    <UTIL_DSP>1</UTIL_DSP>
-                    <FF>58622</FF>
+                    <UTIL_DSP>16</UTIL_DSP>
+                    <FF>199611</FF>
                     <AVAIL_FF>2364480</AVAIL_FF>
-                    <UTIL_FF>2</UTIL_FF>
-                    <LUT>30327</LUT>
+                    <UTIL_FF>8</UTIL_FF>
+                    <LUT>108388</LUT>
                     <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>2</UTIL_LUT>
+                    <UTIL_LUT>9</UTIL_LUT>
                     <URAM>0</URAM>
                     <AVAIL_URAM>960</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
@@ -9066,7 +9176,7 @@
                 <hwRef type="register" interface="s_axi_control" name="I_2" usage="address" direction="in"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="port_to" index="3" direction="inout" srcType="ap_uint&lt;512&gt;*" srcSize="512">
+        <Arg ArgName="port_to" index="3" direction="out" srcType="ap_uint&lt;512&gt;*" srcSize="512">
             <hwRefs>
                 <hwRef type="interface" interface="m_axi_port_to" name="" usage="data" direction="out"/>
                 <hwRef type="interface" interface="s_axi_control" name="" usage="address" direction="in"/>
@@ -9604,7 +9714,7 @@
                     <column name="result">inout, ap_uint&lt;512&gt;*</column>
                     <column name="imgvf">inout, ap_uint&lt;512&gt;*</column>
                     <column name="I">in, ap_uint&lt;512&gt;*</column>
-                    <column name="port_to">inout, ap_uint&lt;512&gt;*</column>
+                    <column name="port_to">out, ap_uint&lt;512&gt;*</column>
                     <column name="port_from">in, ap_uint&lt;512&gt;*</column>
                     <column name="syn_master">out, stream&lt;hls::axis&lt;ap_uint&lt;1&gt; 0 0 0&gt; 0&gt;&amp;</column>
                 </table>
@@ -9635,15 +9745,18 @@
             <item name="Burst Summary">
                 <table>
                     <keys size="3">HW Interface, Message, Location</keys>
-                    <column name="m_axi_imgvf1">Multiple burst reads of length 10 and bit width 512 in loop 'VITIS_LOOP_57_1', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:57:22</column>
-                    <column name="m_axi_I1">Multiple burst reads of length 4096 and bit width 512 in loop 'VITIS_LOOP_68_3', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:68:22</column>
+                    <column name="m_axi_result1">Multiple burst reads of length 10 and bit width 512 in loop 'VITIS_LOOP_58_1', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:58:22</column>
+                    <column name="m_axi_I1">Multiple burst reads of length 4096 and bit width 512 in loop 'MAJOR_LOOP', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:70:5</column>
+                    <column name="m_axi_result1">Multiple burst reads of length 4096 and bit width 512 in loop 'MAJOR_LOOP', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:70:5</column>
+                    <column name="m_axi_port_from">Multiple burst reads of length 4096 and bit width 512 in loop 'MAJOR_LOOP', /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:70:5</column>
                 </table>
             </item>
             <item name="Burst Missed">
                 <table>
                     <keys size="5">HW Interface, Variable, Problem, Resolution, Location</keys>
-                    <column name="m_axi_I1">I, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:68:22</column>
-                    <column name="m_axi_result1">imgvf, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:57:22</column>
+                    <column name="m_axi_port_to">buffer_to, Access store is in the conditional branch, 214-232, /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:126:31</column>
+                    <column name="m_axi_result1">imgvf, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:70:5</column>
+                    <column name="m_axi_result1">imgvf, Could not widen since Type i512 size is greater than or equal to alignment 64(bytes), , /home/yzf/workspace/my_mgvf/exchange_hbm/src/up_kernel.cpp:58:22</column>
                 </table>
             </item>
         </section>
