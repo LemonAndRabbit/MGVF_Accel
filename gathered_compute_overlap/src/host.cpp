@@ -30,9 +30,9 @@ auto constexpr top_size = test_size/2 + ITERATION*GRID_COLS;
 
 ////////////////////RESET FUNCTION//////////////////////////////////
 int reset(float* up_MGVF, float* up_I, float* down_MGVF, float* down_I, float* up_results, float* down_results, float* check_results) {
-    std::ifstream data_input_I("../data/inputI.data");
-    std::ifstream data_input_MGVF("../data/inputMGVF.data");
-    std::ifstream check_output("../data/check1.data");
+    std::ifstream data_input_I("../data/I.data");
+    std::ifstream data_input_MGVF("../data/imgvf.data");
+    std::ifstream check_output("../data/check_4round.data");
 
     std::vector<float> temp_I(test_size), temp_MGVF(test_size);
     for(size_t i=0; i<test_size; i++){
@@ -71,36 +71,40 @@ int reset(float* up_MGVF, float* up_I, float* down_MGVF, float* down_I, float* u
 bool verify(float* up_results, float* down_results, std::vector<float> check_results) {
     bool match = true;
     std::ofstream out("output.data");
-    std::ofstream rpt("report.rpt");
+    std::ofstream record("report.rpt");
     out.precision(18);
+    record.precision(18);
     out << std::fixed;
-    rpt.precision(18);
-    rpt <<std::fixed;
+    record <<std::fixed;
+    std::cout.precision(16);
 
     for(size_t i = 0; i < test_size/2; i++){
         out << up_results[i];
         out << "\n";
         if(up_results[i] != check_results[i]){
             std::cout << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << check_results[i] << "!\n";
-            rpt << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << check_results[i] << "!\n";
+            record << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << check_results[i] << "!\n";
             match = false;
         }
     }
 
     bool match2 =true;
 
-    out << "\%\%\n";
+    //out << "\%\%\n";
     for(size_t i = 0; i < test_size/2; i++){
         out << down_results[i+top_size-test_size/2];
         out << "\n";
         if(down_results[i+top_size-test_size/2] != check_results[i + test_size/2]){
             std::cout << "Unmatch in down_results[" << i << "]: " << down_results[i] << " != " << check_results[i + test_size/2] << "!\n";
-            rpt << "Unmatch in down_results[" << i << "]: " << down_results[i] << " != " << check_results[i + test_size/2] << "!\n";
+            record << "Unmatch in down_results[" << i << "]: " << down_results[i] << " != " << check_results[i + test_size/2] << "!\n";
             match2 = false;
         }
     }
 
     std::cout << "TEST " << (match&&match2 ? "PASSED" : "FAILED") << std::endl;
+    
+    out.close();
+    record.close();
     return match;
 }
 ////////MAIN FUNCTION//////////
@@ -186,27 +190,27 @@ int main(int argc, char** argv) {
     // and provide the PCs
     ptr_up_results.obj = up_results.data();
     ptr_up_results.param = 0;
-    ptr_up_results.flags = pc[0];
+    ptr_up_results.flags = pc[1];
 
     ptr_up_MGVF.obj = up_MGVF.data();
     ptr_up_MGVF.param = 0;
-    ptr_up_MGVF.flags = pc[0];
+    ptr_up_MGVF.flags = pc[2];
 
     ptr_up_I.obj = up_I.data();
     ptr_up_I.param = 0;
-    ptr_up_I.flags = pc[0];
+    ptr_up_I.flags = pc[3];
 
     ptr_down_results.obj = down_results.data();
     ptr_down_results.param = 0;
-    ptr_down_results.flags = pc[0];
+    ptr_down_results.flags = pc[4];
 
     ptr_down_MGVF.obj = down_MGVF.data();
     ptr_down_MGVF.param = 0;
-    ptr_down_MGVF.flags = pc[0];
+    ptr_down_MGVF.flags = pc[5];
 
     ptr_down_I.obj = down_I.data();
     ptr_down_I.param = 0;
-    ptr_down_I.flags = pc[0];
+    ptr_down_I.flags = pc[6];
 
     OCL_CHECK(err, cl::Buffer buffer_up_MGVF(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, top_size*sizeof(float), &ptr_up_MGVF,
                                          &err));

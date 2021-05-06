@@ -38,9 +38,9 @@ int reset(float* up_MGVF, float* up_I, float* down_MGVF, float* down_I, float* u
         sw_results[i] = (a[i] + b[i]) * c[i];
     }
     */
-    std::ifstream data_input_I("../data/inputI.data");
-    std::ifstream data_input_MGVF("../data/inputMGVF.data");
-    std::ifstream check_output("../data/check1.data");
+    std::ifstream data_input_I("../data/I.data");
+    std::ifstream data_input_MGVF("../data/imgvf.data");
+    std::ifstream check_output("../data/check_4round.data");
     for(size_t i = 0; i < test_size/2 - GRID_COLS; i++){
         data_input_MGVF >> up_MGVF[i];
         data_input_I >> up_I[i];
@@ -78,35 +78,59 @@ int reset(float* up_MGVF, float* up_I, float* down_MGVF, float* down_I, float* u
 bool verify(float* up_results, float* down_results, std::vector<float> check_results) {
     bool match = true;
     std::ofstream out("output.data");
+    std::ofstream record("record.rpt");
     out.precision(18);
+    record.precision(18);
     out << std::fixed;
+    record << std::fixed;
+    std::cout.precision(16);
 
     for(size_t i = 0; i < test_size/2; i++){
         out << up_results[i];
         out << "\n";
         if(up_results[i] != check_results[i]){
             std::cout << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << check_results[i] << "!\n";
+            record << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << check_results[i] << "!\n";
             match = false;
         }
     }
-    out << "\%\%\n";
+    //out << "\%\%\n";
     bool match2 =true;
     for(size_t i = 0; i < test_size/2; i++){
         out << down_results[i];
         out << "\n";
         if(down_results[i] != check_results[i + test_size/2]){
             std::cout << "Unmatch in down_results[" << i << "]: " << down_results[i] << " != " << check_results[i + test_size/2] << "!\n";
+            record << "Unmatch in down_results[" << i << "]: " << down_results[i] << " != " << check_results[i + test_size/2] << "!\n";
             match2 = false;
         }
     }
 
     std::cout << "TEST " << (match&&match2 ? "PASSED" : "FAILED") << std::endl;
+
+    out.close();
+    record.close();
     return match;
 }
+
+bool verify_exchange(float* up_results, float* down_results){
+    bool match = true;
+    for(size_t i=0; i<2*GRID_COLS; i++){
+        if(up_results[i+GRID_COLS*(PART_ROWS-1)] != down_results[i]){
+            std::cout << "Unmatch in up_results[" << i << "]: " << up_results[i] << " != " << down_results[i] << "!\n";
+            match = false;
+        }
+    }
+    if(match){
+        std::cout << "Exchange Succeed.\n";
+    }
+    return match;
+}
+
 ////////MAIN FUNCTION//////////
 int main(int argc, char** argv) {
     unsigned int size = test_size;
-    unsigned int size_mgvf_input = test_size/2 + GRID_COLS;
+    unsigned int size_mgvf_input = test_size/2 +  GRID_COLS; //half + two lines
     unsigned int half_size = test_size/2;
     unsigned int shared_size = 2 * GRID_COLS;
 
@@ -115,8 +139,8 @@ int main(int argc, char** argv) {
     std::vector<float, aligned_allocator<float> > up_I(half_size);
     std::vector<float, aligned_allocator<float> > down_MGVF(size_mgvf_input);
     std::vector<float, aligned_allocator<float> > down_I(half_size);
-    std::vector<float, aligned_allocator<float> > up_results(half_size);
-    std::vector<float, aligned_allocator<float> > down_results(half_size);
+    std::vector<float, aligned_allocator<float> > up_results(size_mgvf_input);
+    std::vector<float, aligned_allocator<float> > down_results(size_mgvf_input);
     std::vector<float> check_results(size);
 
     //std::vector<float, aligned_allocator<float> shared_buffer1(shared_size);
@@ -189,27 +213,27 @@ int main(int argc, char** argv) {
     // and provide the PCs
     ptr_up_results.obj = up_results.data();
     ptr_up_results.param = 0;
-    ptr_up_results.flags = pc[0];
+    ptr_up_results.flags = pc[1];
 
     ptr_up_MGVF.obj = up_MGVF.data();
     ptr_up_MGVF.param = 0;
-    ptr_up_MGVF.flags = pc[0];
+    ptr_up_MGVF.flags = pc[2];
 
     ptr_up_I.obj = up_I.data();
     ptr_up_I.param = 0;
-    ptr_up_I.flags = pc[0];
+    ptr_up_I.flags = pc[3];
 
     ptr_down_results.obj = down_results.data();
     ptr_down_results.param = 0;
-    ptr_down_results.flags = pc[0];
+    ptr_down_results.flags = pc[4];
 
     ptr_down_MGVF.obj = down_MGVF.data();
     ptr_down_MGVF.param = 0;
-    ptr_down_MGVF.flags = pc[0];
+    ptr_down_MGVF.flags = pc[5];
 
     ptr_down_I.obj = down_I.data();
     ptr_down_I.param = 0;
-    ptr_down_I.flags = pc[0];
+    ptr_down_I.flags = pc[6];
 
 
 
@@ -223,12 +247,13 @@ int main(int argc, char** argv) {
     OCL_CHECK(err, cl::Buffer buffer_down_I(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_ONLY, half_size*sizeof(float), &ptr_down_I,
                                          &err));                                     
                                          
-    OCL_CHECK(err, cl::Buffer buffer_up_results(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, half_size*sizeof(float), &ptr_up_results,
+    OCL_CHECK(err, cl::Buffer buffer_up_results(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, size_mgvf_input*sizeof(float), &ptr_up_results,
                                          &err));
-    OCL_CHECK(err, cl::Buffer buffer_down_results(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, half_size*sizeof(float), &ptr_down_results,
+    OCL_CHECK(err, cl::Buffer buffer_down_results(context, CL_MEM_USE_HOST_PTR | CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, size_mgvf_input*sizeof(float), &ptr_down_results,
                                          &err));                                                                         
 
     //Alocate Exchange HBM buffer
+    /*
     cl_mem_ext_ptr_t ptr_shared_buffer1, ptr_shared_buffer2;
 
     ptr_shared_buffer1.obj = nullptr;
@@ -243,7 +268,7 @@ int main(int argc, char** argv) {
     OCL_CHECK(err, cl::Buffer shared_buffer2(context, CL_MEM_EXT_PTR_XILINX | CL_MEM_READ_WRITE, shared_size*sizeof(float), &ptr_shared_buffer2,
                                          &err));
 
-
+    */
     // Setting Kernel Arguments
     OCL_CHECK(err, err = kernel.setArg(0, buffer_up_results));
     OCL_CHECK(err, err = kernel.setArg(1, buffer_up_MGVF));
@@ -251,8 +276,8 @@ int main(int argc, char** argv) {
     OCL_CHECK(err, err = kernel.setArg(3, buffer_down_results));
     OCL_CHECK(err, err = kernel.setArg(4, buffer_down_MGVF));
     OCL_CHECK(err, err = kernel.setArg(5, buffer_down_I));
-    OCL_CHECK(err, err = kernel.setArg(6, shared_buffer1));
-    OCL_CHECK(err, err = kernel.setArg(7, shared_buffer2));
+    //OCL_CHECK(err, err = kernel.setArg(6, shared_buffer1));
+    //OCL_CHECK(err, err = kernel.setArg(7, shared_buffer2));
 
     // Copy input data to device global memory
 
@@ -268,7 +293,7 @@ int main(int argc, char** argv) {
     q.finish();
 
     // Copy Result from Device Global Memory to Host Local Memory
-    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_up_MGVF, buffer_down_MGVF}, CL_MIGRATE_MEM_OBJECT_HOST));
+    OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer_up_MGVF, buffer_down_MGVF, buffer_up_results, buffer_down_results}, CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
     // OpenCL Host Code Ends
     printf("???\n");
@@ -276,5 +301,9 @@ int main(int argc, char** argv) {
     // Compare the device results with software results
     bool match = verify(up_MGVF.data(), down_MGVF.data() + GRID_COLS, check_results);
 
-    return (match ? EXIT_SUCCESS : EXIT_FAILURE);
+    bool exchange_successful = verify_exchange(up_results.data(), down_results.data());
+
+    //exchange_successful = verify_exchange(up_MGVF.data(), down_MGVF.data());
+
+    return (true? EXIT_SUCCESS : EXIT_FAILURE);
 }
